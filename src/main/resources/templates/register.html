@@ -16,11 +16,13 @@ $(function(){
 			type : "post",
 			data: $("#myform").serialize(),
 			url : "/voteUser_register.action",
+
 			dataType : "json",
 			success : function(data) {
 				if(  data.code==1){
 					alert("注册成功...");
 					location.href="/login.action";
+
 				}else{
 					alert("注册失败....");
 				}
@@ -52,6 +54,7 @@ $(function(){
 				<dd><input type="password" class="input-text" name="pwd" /></dd>
 				<dt>确认密码：</dt>
 				<dd><input type="password" class="input-text" name="confirmPwd" /></dd>
+
 				<dt></dt>
 				<dd><input type="button" id="inputbutton" class="input-button" name="submit" value="" /></dd>
 			</dl>

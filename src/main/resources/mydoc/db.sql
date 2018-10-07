@@ -170,3 +170,4 @@ insert into voteitem(voteid,vsid,uid) values( 4,3,1);
 insert into voteitem(voteid,vsid,uid) values( 4,3,2);      
 
 insert into voteitem(voteid,vsid,uid) values( 3,1,1); 
+
