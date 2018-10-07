@@ -27,14 +27,10 @@ public class VoteuserController {
 	@RequestMapping("/voteUser_register.action")
 	@ResponseBody
 	public JsonModel  reg(Voteuser v){
-		if(v!=null&&"".equals(v)){
+	
 			int result=voteuserBiz.insert(v);
 			jm.setCode(result);
 			return jm;
-		}
-		jm.setCode(0);
-		return jm;
-		
 	}
 
 }
