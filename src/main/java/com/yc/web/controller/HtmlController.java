@@ -1,23 +1,33 @@
 package com.yc.web.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/")
 public class HtmlController {
 	/**
 	 * 进入登录页面 跳转到index.jsp
 	 */
-	@RequestMapping("/toindex.action")
-	public String gotoindex(HttpSession session){
-		session.removeAttribute("student");
-        return "login";
+	@RequestMapping("login.action")
+	public String gotoindex() {
+		return "index";
 	}
-	@RequestMapping("/toreg.action")
-	public String gotoreg(HttpSession session){
-		session.removeAttribute("student");
-        return "reg";
+
+	// 进入注册界面
+	@RequestMapping("register.action")
+	public String gotoreg() {
+		return "register";
 	}
+
+	@RequestMapping("manage.action")
+	public String manage() {
+		return "manage";
+	}
+
+	@RequestMapping("add.action")
+	public String add() {
+		return "add";
+	}
+
 }
