@@ -22,7 +22,11 @@ public class VoteuserBizImpl implements VoteuserBiz{
 
 	@Override
 	public int insert(Voteuser v) {
+<<<<<<< HEAD
 		return this.baseDao.add(v, "insert");
+=======
+		return baseDao.add(v, "insert");
+>>>>>>> branch 'master' of git@github.com:huchaojie/newvote.git
 	}
 	
 	/**

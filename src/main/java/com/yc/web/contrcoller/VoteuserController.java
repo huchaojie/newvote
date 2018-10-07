@@ -29,13 +29,23 @@ public class VoteuserController {
 	@RequestMapping("/voteUser_register.action")
 	@ResponseBody
 	public JsonModel reg(Voteuser v) {
-		System.out.println(v.getUname());
-		int result = voteuserBiz.insert(v);
-		System.out.println(result);
-		jm.setCode(result);
+		if (v != null && "".equals(v)) {
+			int result = voteuserBiz.insert(v);
+			jm.setCode(result);
+			return jm;
+		}
+		jm.setCode(0);
 		return jm;
 	}
 
+	@RequestMapping("/voteSubject_findAll.action")
+	@ResponseBody
+	public JsonModel findAll(Voteuser v) {
+		int result = voteuserBiz.insert(v);
+		jm.setCode(result);
+		return jm;
+	}
+	
 	/**
 	 * 登录
 	 */

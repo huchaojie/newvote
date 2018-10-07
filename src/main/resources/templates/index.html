@@ -37,6 +37,7 @@ $(function(){
 	　　$("#inputbutton").click(function(){
 	　　　　$.ajax({
 			type : "post",
+
 			data: $("#myform").serialize(),  
 			url : "login.action",
 			dataType : "json",
