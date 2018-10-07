@@ -1,4 +1,4 @@
-package com.yc.web.controller;
+package com.yc.web.contrcoller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -8,25 +8,41 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.yc.bean.VoteUser;
-import com.yc.service.VoteService;
+import com.yc.bean.Voteuser;
+import com.yc.biz.VoteuserBiz;
 import com.yc.util.JsonModel;
 
 @Controller
-@SessionAttributes("vote")
-public class VoteUserController {
+public class VoteuserController {
+
+	@Resource(name = "voteuserBizImpl")
+	private VoteuserBiz voteuserBiz;
 	
-	@Resource(name="voteServiceImpl")
-	private VoteService voteService;
+	JsonModel jm = new JsonModel();
+
+	/**
+	 * 用户注册
+	 * @param v
+	 * @return
+	 */
+	@RequestMapping("/voteUser_register.action")
+	@ResponseBody
+	public JsonModel reg(Voteuser v) {
+		System.out.println(v.getUname());
+		int result = voteuserBiz.insert(v);
+		System.out.println(result);
+		jm.setCode(result);
+		return jm;
+	}
+
 	/**
 	 * 登录
 	 */
 	@RequestMapping(value = "login.action",method=RequestMethod.POST)
-	public @ResponseBody JsonModel login(VoteUser vu,HttpSession session,HttpServletRequest req){
+	public @ResponseBody JsonModel login(Voteuser vu,HttpSession session,HttpServletRequest req){
 		JsonModel js= new JsonModel();
-		vu = voteService.login(vu);
+		vu = voteuserBiz.login(vu);
 		if(vu!=null && !"".equals(vu)){
 			session.setAttribute("vu", vu);
 			js.setCode(1);
@@ -35,4 +51,5 @@ public class VoteUserController {
 		js.setCode(0);
 		return js;
 	}
+
 }

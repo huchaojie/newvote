@@ -106,7 +106,8 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			</dependency>
+			<version>3.2.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>net.sf.json-lib</groupId>
@@ -126,24 +127,27 @@
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
-			</dependency>
+			<version>1.1</version>
+		</dependency>
 
 		<!--thymeleaf的非严格的html -->
 		<dependency>
 			<groupId>net.sourceforge.nekohtml</groupId>
 			<artifactId>nekohtml</artifactId>
-			</dependency>
-		
-		<!-- mail包 -->
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
+			<version>1.9.22</version>
 		</dependency>
+		
+		<!-- hot swap  热插拔-->
 		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-			<version>1.1</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version>
 		</dependency>
 		
 		<!-- swagger2依赖 -->
@@ -165,6 +169,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                    <!-- 如果没有该项配置，devtools不会起作用，即应用不会restart -->
+                    <fork>true</fork>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>

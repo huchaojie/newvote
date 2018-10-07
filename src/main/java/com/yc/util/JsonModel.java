@@ -5,35 +5,31 @@ import java.util.List;
 
 public class JsonModel<T> implements Serializable {
 
-	private static final long serialVersionUID = 9106902882602433353L;
-
-	 private Integer code;
-	    private T obj;
-	    private String errmsg;
-	    
-	    
-		public Integer getCode() {
-			return code;
-		}
-		public void setCode(Integer code) {
-			this.code = code;
-		}
-		public T getObj() {
-			return obj;
-		}
-		public void setObj(T obj) {
-			this.obj = obj;
-		}
-		public String getErrmsg() {
-			return errmsg;
-		}
-		public void setErrmsg(String errmsg) {
-			this.errmsg = errmsg;
-		}
-		@Override
-		public String toString() {
-			return "JsonModel [code=" + code + ", obj=" + obj + ", errmsg="
-					+ errmsg + "]";
-		}
-
+	private static final long serialVersionUID = 1L;
+	private Integer code;
+	private Object obj;
+	private String error;
+	public Integer getCode() {
+		return code;
+	}
+	public void setCode(Integer code) {
+		this.code = code;
+	}
+	public Object getObj() {
+		return obj;
+	}
+	public void setObj(Object obj) {
+		this.obj = obj;
+	}
+	public String getError() {
+		return error;
+	}
+	public void setError(String error) {
+		this.error = error;
+	}
+	@Override
+	public String toString() {
+		return "JsonMode [code=" + code + ", obj=" + obj + ", error=" + error + "]";
+	}
+	
 }

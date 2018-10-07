@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <title>登录</title>
@@ -37,13 +37,13 @@ $(function(){
 	　　$("#inputbutton").click(function(){
 	　　　　$.ajax({
 			type : "post",
-			data: $("#myform").serialize(),       // 
+			data: $("#myform").serialize(),  
 			url : "login.action",
 			dataType : "json",
 			success : function(data) {
 				if( data.code==1){
 					alert("登录成功...");
-					location.href="tomanage.action";
+					location.href="manage.html";
 				}else{
 					alert("登录失败,原因:"+ data.msg);
 				}
@@ -69,7 +69,7 @@ $(function(){
 			</div>
 			<div class="login">
 				<h2>用户登录</h2>
-				<form id="myform" method="post" action="login.action">
+				<form id="myform" method="post" action="">
 					<dl id="loginBox">
 						<dt>用户名：</dt>
 						<dd>
@@ -82,7 +82,8 @@ $(function(){
 						<dt></dt>
 						<dd>
 							<input type="button" id="inputbutton" name="submit" value="登录" />
-							<a href="../register.html">新用户注册</a>
+							<a href="/register.action">新用户注册</a>
+
 						</dd>
 					</dl>
 				</form>

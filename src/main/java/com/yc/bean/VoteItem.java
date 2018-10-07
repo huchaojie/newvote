@@ -22,7 +22,7 @@ public class VoteItem implements Serializable{
 	public void setVoteoption(String voteoption) {
 		this.voteoption = voteoption;
 	}
-
+	
 	public Integer getVotecount() {
 		return votecount;
 	}

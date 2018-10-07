@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 create database votedb;
 
 use votedb;
@@ -59,18 +60,7 @@ alter table voteitem
     add constraint fk_voteitem_uid
        foreign key( uid) references voteuser(uid);
 
-
-
---添加用户
-insert into voteuser ( uname, pwd)
-values ('a', 'a');
-insert into voteuser ( uname, pwd)
-values ('b', 'a');
-insert into voteuser ( uname, pwd)
-values ('c', 'a');
-
-
---添加投票主题
+       
 insert into votesubject (TITLE, sTYPE)
 values ( '选出你心目中最好的下载工具', 2);
 insert into votesubject (TITLE, sTYPE)
@@ -86,7 +76,8 @@ values ('选出你心目中最好的杀毒软件', 1);
 insert into votesubject(title, stype)
 values( '中国的首都是?',1);
 
---添加主题中的选项
+
+
 insert into voteoption ( voteoption, vsid, voteorder)
 values ('腾讯QQ', 3, 1);
 insert into voteoption ( voteoption, vsid, voteorder)
@@ -173,57 +164,10 @@ insert into voteoption ( voteoption, vsid, voteorder)
 values ( '天堂', 4, 2);
 
 
-insert into voteitem(voteid,vsid,uid) values( 1,3,1);      --1号用户投票3号主题(选出你心目中最好的网络聊天工具, 7个选项)选了a( 腾讯QQ)
-insert into voteitem(voteid,vsid,uid) values( 2,3,1);      ----1号用户投票3号主题(选出你心目中最好的网络聊天工具)选了b(MSN)
-insert into voteitem(voteid,vsid,uid) values( 4,3,1);      ----1号用户投票3号主题(选出你心目中最好的网络聊天工具)选了c(新浪UC)
+insert into voteitem(voteid,vsid,uid) values( 1,3,1);      
+insert into voteitem(voteid,vsid,uid) values( 2,3,1);     
+insert into voteitem(voteid,vsid,uid) values( 4,3,1);      
 
-insert into voteitem(voteid,vsid,uid) values( 4,3,2);      ----2号用户投票3号主题(选出你心目中最好的网络聊天工具)选了c(新浪UC)
+insert into voteitem(voteid,vsid,uid) values( 4,3,2);      
 
-insert into voteitem(voteid,vsid,uid) values( 3,1,1);      ----1号用户投票1号主题(选出你心目中最好的下载工具, 5个选项)选了a(迅雷)
-
--- distinct(uid)去重, 因为一个用户可以对多选题进行多个投票
-select a.vsid,a.title,a.stype,a.usercount,  ifnull(b.optioncount,0) as optioncount from (
-		select votesubject.vsid,votesubject.title,votesubject.stype,count( distinct(uid)) as usercount 
-		from voteitem 
-		right join votesubject
-		on voteitem.vsid=votesubject.vsid
-		group by voteitem.vsid, votesubject.title
-	) a
-	left join (
-		select votesubject.vsid, count( * ) as optioncount
-		from votesubject
-		inner join voteoption
-		on voteoption.vsid=votesubject.vsid
-		group by votesubject.vsid
-	)b
-	on a.vsid=b.vsid 
-where a.vsid=6
-
-
-
---求出某个主题(如3号主题)下每个选项的用户选择数
-select a.voteid,a.voteoption,ifnull(b.votecount,0) as votecount from 
-(
-	select vsid, voteid,voteoption from voteoption where vsid=1
-)a
-left join 
-(
-	select vsid,voteid,count(voteid) as votecount  from voteitem
-	where vsid=1 
-	group by voteid
-)b
-on a.voteid=b.voteid
-
-select * from voteitem;
-
-select * from voteoption;
-
-select a.vsid,a.title,a.stype,a.usercount,  ifnull(b.optioncount,0) as optioncount from (   select votesubject.vsid,votesubject.title,votesubject.stype,count( distinct(uid)) as usercount   from voteitem  right join votesubject  on voteitem.vsid=votesubject.vsid  group by voteitem.vsid, votesubject.title  ) a  left join (  select votesubject.vsid, count( * ) as optioncount  from votesubject  inner join voteoption  on voteoption.vsid=votesubject.vsid  group by votesubject.vsid  )b  on a.vsid=b.vsid 
-
-
-
-
-
-
-
-
+insert into voteitem(voteid,vsid,uid) values( 3,1,1); 

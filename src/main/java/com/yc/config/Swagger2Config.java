@@ -1,6 +1,5 @@
 package com.yc.config;
 
-
 //swagger2的配置文件，在项目的启动类的同级文件建立
 
 import org.springframework.context.annotation.Bean;
@@ -13,7 +12,6 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 /**
  * swagger2的配置文件
  * @author 何翔
