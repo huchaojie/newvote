@@ -1,9 +1,12 @@
 package com.yc.web.contrcoller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yc.bean.Voteuser;
@@ -41,6 +44,22 @@ public class VoteuserController {
 		int result = voteuserBiz.insert(v);
 		jm.setCode(result);
 		return jm;
+	}
+	
+	/**
+	 * 登录
+	 */
+	@RequestMapping(value = "login.action",method=RequestMethod.POST)
+	public @ResponseBody JsonModel login(Voteuser vu,HttpSession session,HttpServletRequest req){
+		JsonModel js= new JsonModel();
+		vu = voteuserBiz.login(vu);
+		if(vu!=null && !"".equals(vu)){
+			session.setAttribute("vu", vu);
+			js.setCode(1);
+			return js;
+		}
+		js.setCode(0);
+		return js;
 	}
 
 }

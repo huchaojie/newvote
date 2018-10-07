@@ -10,4 +10,10 @@ public interface VoteuserBiz {
 	 * @return
 	 */
    int insert(Voteuser v);
+   
+   /**
+	 * 登录
+	 *
+	 */
+	Voteuser login(Voteuser vu);
 }

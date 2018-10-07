@@ -1,5 +1,7 @@
 package com.yc.biz.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +24,17 @@ public class VoteuserBizImpl implements VoteuserBiz{
 	public int insert(Voteuser v) {
 		return baseDao.add(v, "insert");
 	}
-
+	
+	/**
+	 * 登录
+	 */
+	@Override
+	public Voteuser login(Voteuser vu) {
+		List<Voteuser> list = this.baseDao.findAll(vu, "login");
+		if(list!=null && list.size()>0){
+			return list.get(0);
+		}else{
+			return null;
+		}
+	}
 }

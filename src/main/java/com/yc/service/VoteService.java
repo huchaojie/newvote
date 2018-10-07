@@ -11,9 +11,5 @@ import com.yc.bean.Voteuser;
  */
 @Repository
 public interface VoteService {
-	/**
-	 * 登录
-	 *
-	 */
-	Voteuser login(Voteuser vu);
+	
 }
