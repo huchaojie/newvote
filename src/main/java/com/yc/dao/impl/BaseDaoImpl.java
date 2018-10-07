@@ -2,7 +2,6 @@ package com.yc.dao.impl;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSessionFactory;

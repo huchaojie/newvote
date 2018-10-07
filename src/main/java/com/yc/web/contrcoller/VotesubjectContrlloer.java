@@ -1,4 +1,4 @@
-package com.yc.web.controller;
+package com.yc.web.contrcoller;
 
 import java.util.ArrayList;
 import java.util.List;

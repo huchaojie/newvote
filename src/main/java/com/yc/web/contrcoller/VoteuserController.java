@@ -1,4 +1,4 @@
-package com.yc.web.controller;
+package com.yc.web.contrcoller;
 
 import javax.annotation.Resource;
 
@@ -13,12 +13,11 @@ import com.yc.util.JsonModel;
 @Controller
 public class VoteuserController {
 
-	@Resource(name="voteuserBizImpl")
+	@Resource(name = "voteuserBizImpl")
 	private VoteuserBiz voteuserBiz;
 	
-	JsonModel jm =new JsonModel();
-	
-	
+	JsonModel jm = new JsonModel();
+
 	/**
 	 * 用户注册
 	 * @param v
@@ -26,15 +25,22 @@ public class VoteuserController {
 	 */
 	@RequestMapping("/voteUser_register.action")
 	@ResponseBody
-	public JsonModel  reg(Voteuser v){
-		if(v!=null&&"".equals(v)){
-			int result=voteuserBiz.insert(v);
+	public JsonModel reg(Voteuser v) {
+		if (v != null && "".equals(v)) {
+			int result = voteuserBiz.insert(v);
 			jm.setCode(result);
 			return jm;
 		}
 		jm.setCode(0);
 		return jm;
-		
+	}
+
+	@RequestMapping("/voteSubject_findAll.action")
+	@ResponseBody
+	public JsonModel findAll(Voteuser v) {
+		int result = voteuserBiz.insert(v);
+		jm.setCode(result);
+		return jm;
 	}
 
 }

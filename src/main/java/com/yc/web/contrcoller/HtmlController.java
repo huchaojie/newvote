@@ -1,4 +1,4 @@
-package com.yc.web.controller;
+package com.yc.web.contrcoller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
