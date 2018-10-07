@@ -1,6 +1,6 @@
 package com.yc.biz;
 
-import com.yc.bean.Voteuser;
+import com.yc.bean.VoteUser;
 
 public interface VoteuserBiz {
 
@@ -9,11 +9,11 @@ public interface VoteuserBiz {
 	 * @param v
 	 * @return
 	 */
-   int insert(Voteuser v);
+   int insert(VoteUser v);
    
    /**
 	 * 登录
 	 *
 	 */
-	Voteuser login(Voteuser vu);
+	VoteUser login(VoteUser vu);
 }

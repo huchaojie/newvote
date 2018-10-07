@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import com.yc.bean.Voteuser;
+import com.yc.bean.VoteUser;
 import com.yc.biz.VoteuserBiz;
 import com.yc.dao.BaseDao;
 
@@ -21,20 +21,17 @@ public class VoteuserBizImpl implements VoteuserBiz{
 
 
 	@Override
-	public int insert(Voteuser v) {
-<<<<<<< HEAD
-		return this.baseDao.add(v, "insert");
-=======
+	public int insert(VoteUser v) {
+
 		return baseDao.add(v, "insert");
->>>>>>> branch 'master' of git@github.com:huchaojie/newvote.git
 	}
 	
 	/**
 	 * 登录
 	 */
 	@Override
-	public Voteuser login(Voteuser vu) {
-		List<Voteuser> list = this.baseDao.findAll(vu, "login");
+	public VoteUser login(VoteUser vu) {
+		List<VoteUser> list = this.baseDao.findAll(vu, "login");
 		if(list!=null && list.size()>0){
 			return list.get(0);
 		}else{
