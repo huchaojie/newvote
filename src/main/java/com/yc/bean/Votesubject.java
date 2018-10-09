@@ -7,7 +7,13 @@ public class Votesubject {
 	private int vsid;
 	private String title;
 	private int   stype;
+	
+	
+	
+	private Integer usercount;
+	private Integer  optioncount;
 	private List<Voteoption> voteoption;
+	
 	
 	public int getVsid() {
 		return vsid;
@@ -33,12 +39,23 @@ public class Votesubject {
 	public void setVoteoption(List<Voteoption> voteoption) {
 		this.voteoption = voteoption;
 	}
+	public Integer getUsercount() {
+		return usercount;
+	}
+	public void setUsercount(Integer usercount) {
+		this.usercount = usercount;
+	}
+	public Integer getOptioncount() {
+		return optioncount;
+	}
+	public void setOptioncount(Integer optioncount) {
+		this.optioncount = optioncount;
+	}
 	@Override
 	public String toString() {
 		return "Votesubject [vsid=" + vsid + ", title=" + title + ", stype="
-				+ stype + ", voteoption=" + voteoption + "]";
+				+ stype + ", usercount=" + usercount + ", optioncount="
+				+ optioncount + ", voteoption=" + voteoption + "]";
 	}
-	
-	
 	
 }

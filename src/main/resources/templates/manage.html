@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <title>投票主题</title>
@@ -30,7 +30,7 @@ $(function(){
 						str+='<a href="">'+ item.title+'</a>';
 						str+='</h4><div class="join">';
 						str+='<a href="vote.html?vsid='+   item.vsid +'">我要参与</a></div>';
-						str+='<p class="info">共有 '+  item.optioncount+'个选项，已有  '+ item.usercount+'个网友参与了投票。</p>';
+						str+='<p class="info">共有 '+  item.optioncount+'个选项已有  '+ item.usercount+'个网友参与了投票。</p>';
 						str+='</li>';
 			           $("#list").html(  $("#list").html()+str   );
 			        }); 
@@ -61,12 +61,10 @@ $(function(){
 		<img src="images/logo.gif" />
 	</div>
 
-
-
 	<div id="navbar" class="wrap">
 		<div class="profile">
-			您好，<span id="loginuser"></span> <span class="return"><a
-				href="manage.html">返回列表</a></span> <span class="addnew"><a
+			您好，<span id="loginuser"  ><span th:text="${session.uname}"></span ></span> <span class="return"><a
+				href="manage.action">返回列表</a></span> <span class="addnew"><a
 				href="add.action">添加新投票</a></span>
 
 
@@ -91,7 +89,7 @@ $(function(){
 					<a href="Vote!view.action?entityId=103">中国首都是??</a>
 				</h4>
 				<div class="join">
-					<a href="Vote.action?entityId=103">我要参与</a>
+					<a href="Vote.action?entityId=21">我要参与</a>
 				</div>
 				<p class="info">共有 5 个选项，已有 个网友参与了投票。</p>
 			</li>

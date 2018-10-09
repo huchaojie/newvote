@@ -51,4 +51,12 @@ public class VotesubjectBizImpl implements VotesubjectBiz{
 		return 0;
 	}
 
+	@Override
+	public List<Votesubject> selectVoteAll(Votesubject v) {
+		
+		return baseDao.findAll(v, "selectVoteAll");
+	}
+
+	
+
 }

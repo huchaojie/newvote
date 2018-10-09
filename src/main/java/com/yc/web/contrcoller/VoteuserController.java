@@ -27,7 +27,6 @@ public class VoteuserController {
 
 	/**
 	 * 用户注册
-	 * 
 	 * @param v
 	 * @return
 	 */
@@ -40,7 +39,6 @@ public class VoteuserController {
 	@ResponseBody
 	public JsonModel reg(String uname,String pwd) {
 		int result;
-		System.out.println(uname);
 		if(uname!=null && uname.length()>0||pwd!=null && pwd.length()>0){
 			VoteUser v=new VoteUser();
 			v.setUname(uname);
@@ -64,6 +62,7 @@ public class VoteuserController {
 		vu = voteuserBiz.login(vu);
 		if (vu != null && !"".equals(vu)) {
 			session.setAttribute("vu", vu);
+			session.setAttribute("uname", vu.getUname());
 			js.setCode(1);
 			return js;
 		}

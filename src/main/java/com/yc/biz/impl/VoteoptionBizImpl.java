@@ -1,5 +1,7 @@
 package com.yc.biz.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -22,6 +24,13 @@ public class VoteoptionBizImpl implements VoteoptionBiz {
 	@Override
 	public int insert(Voteoption v) {
 		return baseDao.add(v, "insert");
+	}
+	
+	@Override
+	public List<Voteoption> selectVoteoptionAll(Integer vsid) {
+		Voteoption vp=new Voteoption();
+		vp.setVsid(vsid);
+		return baseDao.findAll(vp, "selectVoteoptionAll");
 	}
 
 }
