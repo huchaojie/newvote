@@ -46,15 +46,15 @@ $(function(){
 					$("#result").html("");
 					var total=0;
 					//计算当前的vsid主题总的投票数
-					for( var i=0;i<data.options.length;i++){
-						var option=data.options[i];
+					for( var i=0;i<data.voteoption.length;i++){
+						var option=data.voteoption[i];
 						if( option.votecount){
 							total+=option.votecount;
 						}
 					}
 					
-					for( var i=0;i<data.options.length;i++){
-						var option=data.options[i];
+					for( var i=0;i<data.voteoption.length;i++){
+						var option=data.voteoption[i];
 						listr+='<li><div class="rate">'+ option.voteoption;
 						var rate=0;
 						var count=0;

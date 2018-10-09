@@ -10,7 +10,7 @@
 	  insert into voteitem(voteid,vsid,uid)  values(#{voteid},#{vsid},#{uid})
 	</insert>
 	
-	<select id="find" parameterType="java.lang.Integer" resultType="com.yc.bean.VoteItem">
+	<select id="find" parameterType="java.lang.Integer" resultType="com.yc.bean.VoteItem" >
 		select a.voteid,a.voteoption,ifnull(b.votecount,0) as votecount from 
 		(select vsid, voteid,voteoption from voteoption where vsid=#{vsid} ) a 
 		left join (select vsid,voteid,count(voteid) as votecount  from voteitem 

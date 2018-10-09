@@ -61,11 +61,9 @@ public class VotesubjectBizImpl implements VotesubjectBiz {
 	}
 
 	@Override
-	public List statVoteCountPerOptionOfSubject(Integer entityId){
-		VoteItem vi = new VoteItem();
-		List<VoteItem> list = new ArrayList<VoteItem>();
-		list = baseDao.findAll(vi, "find");
-		return list;
+	public List<VoteItem> statVoteCountPerOptionOfSubject(VoteItem vi){
+		
+		return baseDao.findAll(vi, "find");
 	}
 	
 	public List<Votesubject> selectVoteAll(Votesubject v) {

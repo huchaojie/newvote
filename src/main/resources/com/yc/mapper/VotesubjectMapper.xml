@@ -15,7 +15,7 @@
 		right join votesubject 
 		on voteitem.vsid=votesubject.vsid 
 		group by voteitem.vsid, votesubject.title ) a 
-		left join ( select votesubject.vsid, count( * ) as optioncount 
+		left join ( select votesubject.vsid, count(*) as optioncount 
 		from votesubject inner join voteoption 
 		on voteoption.vsid=votesubject.vsid group by votesubject.vsid 
 		)b on a.vsid=b.vsid 
@@ -31,7 +31,7 @@
 		votesubject.vsid,votesubject.title,votesubject.stype,count(distinct(uid))
 		as usercount from voteitem
 		right join votesubject on voteitem.vsid=votesubject.vsid
-		group by voteitem.vsid,votesubject.title) a
+		group by voteitem.vsid,votesubject.title ) a
 		left join ( select votesubject.vsid,count(*) as optioncount
 		from votesubject
 		inner join voteoption on voteoption.vsid=votesubject.vsid

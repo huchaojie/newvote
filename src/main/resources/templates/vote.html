@@ -15,8 +15,8 @@ $(function(){
 			//取出地址栏中的参数  vsid   主题编号
 	        var href=location.href;
 	        var index=href.indexOf("?");
-	        var params=href.substring(index+1 ); 
-	        // vsid=1
+	        var params=href.substring(index+1 ); // vsid=1
+	        
 	        $("#votebutton").click(function(){
 	        	  $.ajax({
 	  				type : "post",
@@ -30,6 +30,7 @@ $(function(){
 	  					}else if(data.code==0){
 	  						alert("投票失败,原因:"+ data.msg);
 	  					}else{
+	  						alert("投票失败,原因:"+ data.msg);
 	  						location.href="login.action"
 	  					}
 	  				}

@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -71,24 +72,30 @@ public class VotesubjectContrlloer {
 	
 	@RequestMapping("/voteSubject_findByVsidWithOptionInfo.action")
 	@ResponseBody
-	public JsonModel voteSubject_findByVsidWithOptionInfo(HttpSession session){
+	public JsonModel voteSubject_findByVsidWithOptionInfo(HttpSession session,Integer entityId){
+		VoteItem vim=new VoteItem();
+		vim.setVsid(entityId);
 		//从session中取出subject
 		Votesubject vs = (Votesubject) session.getAttribute("votesubject");
 		//根据vsid编号 查询这个主题中所有的投票的信息
 		
-		List<VoteItem> list = votesubjectBiz.statVoteCountPerOptionOfSubject(null);
+		List<VoteItem> list = votesubjectBiz.statVoteCountPerOptionOfSubject(vim);
 		System.out.println(list);
+		System.out.println(vs);
 		for(VoteItem vi : list){
 			//取出voteitem投票信息,再取出  vs中所有的选项, 
-			for(  int i=0;i<vs.getOptions().size();i++){
-				Voteoption vo=vs.getOptions().get(i);
+			for(  int i=0;i<vs.getVoteoption().size();i++){
+				Voteoption vo=vs.getVoteoption().get(i);
 				//如果这个选 项被 用户投了
 				if( vo.getVoteid()== vi.getVoteid()){
 					vo.setVotecount(   vi.getVotecount()  );
-					vs.getOptions().set(i, vo);   //这样在  vs中就有投票项，也有这个投票项的用户投票数
+					vs.getVoteoption().set(i, vo);   //这样在  vs中就有投票项，也有这个投票项的用户投票数
 				}
 			}
 		}
+		System.out.println(vs);
+		jm.setCode(1);
+		jm.setObj(vs);
 		return jm;
 	}
 	
@@ -101,7 +108,7 @@ public class VotesubjectContrlloer {
 	@ApiImplicitParam(name="entityId",value="投票id",required=true,dataType="Integer")
 	@RequestMapping("voteSubject_findByVsid.action")
 	@ResponseBody
-	public JsonModel Vote(Integer entityId){
+	public JsonModel Vote(Integer entityId,HttpSession session){
 		Votesubject vs=new Votesubject();
 		vs.setVsid(entityId);
 		
@@ -111,6 +118,7 @@ public class VotesubjectContrlloer {
 			v.setVoteoption(lists);
 			vs=v;
 		}
+		session.setAttribute("votesubject", vs);
 		jm.setObj(vs);
 		jm.setCode(1);
 		return jm;
@@ -129,10 +137,9 @@ public class VotesubjectContrlloer {
 	@RequestMapping("voteSubject_vote.action")
 	@ResponseBody
 	public JsonModel voteSubject_vote(Integer vsid,Integer chooseIds,HttpSession session){
-		VoteUser vu=(VoteUser) session.getAttribute("vu");
+		VoteUser vu=(VoteUser) session.getAttribute("loginUser");
 		VoteItem vi=new VoteItem();
 		try {
-			System.out.println(vu.getUid());
 			vi.setUid(vu.getUid());
 			vi.setVsid(vsid);
 			List<VoteItem> list=voteItemBiz.selectUserVote(vi);
@@ -147,6 +154,7 @@ public class VotesubjectContrlloer {
 			}
 		} catch (NullPointerException e) {
 			jm.setCode(2);
+			jm.setError("You haven't logged in yet!");
 			return jm;
 		}
 		return jm;

@@ -11,7 +11,9 @@ public class VoteItem implements Serializable{
 	private Integer uid; // 用户
 	
 	private Integer nums;
+	
 	public Integer votecount;
+	
 	private String voteoption;
 
 	
@@ -55,12 +57,6 @@ public class VoteItem implements Serializable{
 		this.uid = uid;
 	}
 
-	@Override
-	public String toString() {
-		return "VoteItem [viid=" + viid + ", vsid=" + vsid + ", voteid="
-				+ voteid + ", uid=" + uid + ", nums=" + nums + "]";
-	}
-
 	public Integer getVotecount() {
 		return votecount;
 	}
@@ -77,4 +73,12 @@ public class VoteItem implements Serializable{
 		this.voteoption = voteoption;
 	}
 
+	@Override
+	public String toString() {
+		return "VoteItem [viid=" + viid + ", vsid=" + vsid + ", voteid="
+				+ voteid + ", uid=" + uid + ", nums=" + nums + ", votecount="
+				+ votecount + ", voteoption=" + voteoption + "]";
+	}
+
+	
 }

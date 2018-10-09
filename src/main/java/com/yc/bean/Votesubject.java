@@ -12,7 +12,6 @@ public class Votesubject {
 	private List<Voteoption> voteoption;
 	private Integer usercount;
 	private Integer optioncount; // 这个主题的选项数
-	private List<Voteoption> options = new ArrayList<Voteoption>();
 	private List<Long> chooseIds = new ArrayList<Long>();
 	private List<String> voteoptions = new ArrayList<String>();
 
@@ -64,14 +63,6 @@ public class Votesubject {
 		this.optioncount = optioncount;
 	}
 
-	public List<Voteoption> getOptions() {
-		return options;
-	}
-
-	public void setOptions(List<Voteoption> options) {
-		this.options = options;
-	}
-
 	public List<Long> getChooseIds() {
 		return chooseIds;
 	}
@@ -91,7 +82,7 @@ public class Votesubject {
 	@Override
 	public String toString() {
 		return "Votesubject [vsid=" + vsid + ", title=" + title + ", stype=" + stype + ", voteoption=" + voteoption
-				+ ", usercount=" + usercount + ", optioncount=" + optioncount + ", options=" + options + ", chooseIds="
+				+ ", usercount=" + usercount + ", optioncount=" + optioncount + ", chooseIds="
 				+ chooseIds + ", voteoptions=" + voteoptions + "]";
 	}
 }

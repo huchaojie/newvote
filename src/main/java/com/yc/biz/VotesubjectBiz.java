@@ -2,6 +2,7 @@ package com.yc.biz;
 
 import java.util.List;
 
+import com.yc.bean.VoteItem;
 import com.yc.bean.Voteoption;
 import com.yc.bean.Votesubject;
 
@@ -21,7 +22,7 @@ public interface VotesubjectBiz {
 	 * @return
 	 * @throws Exception 
 	 */
-	public List statVoteCountPerOptionOfSubject(Integer integer);
+	public List<VoteItem> statVoteCountPerOptionOfSubject(VoteItem vi);
 	
 	List<Votesubject> selectVoteAll(Votesubject v);
 	
