@@ -14,8 +14,6 @@ $(function(){
 	        var href=location.href;
 	        var index=href.indexOf("?");
 	        var params=href.substring(index+1 );   // vsid=xxx
-	
-	　　   
 	　　        $.ajax({
 				type : "post",
 				url : "voteSubject_getLoginUser.action",
@@ -43,9 +41,7 @@ $(function(){
 					$("#optioncount").html( data.optioncount);
 					$("#usercount").html(data.usercount);
 					//$("#vsid").val(  data.vsid);
-					
 					$("#returnLink").attr("href","vote.action?"+params);
-					
 					var listr="";
 					$("#result").html("");
 					var total=0;
@@ -69,7 +65,7 @@ $(function(){
 							rate=option.votecount/total*100;   //计算比率
 						}
 						listr+='<div class="ratebg"><div class="percent" style="width:'+ rate+'%"></div></div>';
-						listr+='<p>'+   count+'票<span>('+ rate+'%)</span></p>';
+						listr+='<p>'+ count+'票<span>('+ rate+'%)</span></p>';
 						listr+='</div></li>';
 					}
 					$("#result").html( listr);
@@ -103,7 +99,6 @@ $(function(){
 			</form>
 		</div>
 	</div>
-
 
 
 	<div id="vote" class="wrap">

@@ -7,4 +7,7 @@
 		values(#{voteoption},#{voteorder},#{vsid})
 	</insert>
 	
+	<select id="selectVoteoptionAll" parameterType="com.yc.bean.Voteoption" resultType="com.yc.bean.Voteoption">
+	    select * from voteoption where vsid=#{vsid}
+	</select>
 </mapper>

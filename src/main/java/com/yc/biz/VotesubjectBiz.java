@@ -17,11 +17,13 @@ public interface VotesubjectBiz {
 	
 	/**
 	 * 某个主题的每个投票项的投票数
-	 * @param entityId
+	 * @param integer
 	 * @return
 	 * @throws Exception 
 	 */
-	public List statVoteCountPerOptionOfSubject(Long entityId);
+	public List statVoteCountPerOptionOfSubject(Integer integer);
+	
+	List<Votesubject> selectVoteAll(Votesubject v);
 	
 	
 }

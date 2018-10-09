@@ -201,6 +201,6 @@ select a.vsid,a.title,a.stype,a.usercount,  ifnull(b.optioncount,0) as optioncou
 where a.vsid=6
 
 select a.voteid,a.voteoption,ifnull(b.votecount,0) as votecount from 
-		(select vsid, voteid,voteoption from voteoption where vsid="+entityId+") a "
+		(select vsid, voteid,voteoption from voteoption where vsid=3) a 
 		left join (select vsid,voteid,count(voteid) as votecount  from voteitem 
-		where vsid="+entityId group by voteid )b on a.voteid=b.voteid
+		where vsid=3 group by voteid )b on a.voteid=b.voteid

@@ -4,7 +4,7 @@ public class Voteoption {
     
 	private int voteid;
 	private String voteoption;
-	private Long vsid;
+	private Integer vsid;
 	private int voteorder;
 	public Integer votecount;
 	
@@ -20,10 +20,10 @@ public class Voteoption {
 	public void setVoteoption(String voteoption) {
 		this.voteoption = voteoption;
 	}
-	public Long getVsid() {
+	public Integer getVsid() {
 		return vsid;
 	}
-	public void setVsid(Long vsid) {
+	public void setVsid(Integer vsid) {
 		this.vsid = vsid;
 	}
 	public int getVoteorder() {

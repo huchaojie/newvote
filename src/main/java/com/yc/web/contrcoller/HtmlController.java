@@ -36,7 +36,7 @@ public class HtmlController {
 	}
 	
 	@RequestMapping("view.action")
-	public String view(){
+	public String view() {
 		return "view";
 	}
 }

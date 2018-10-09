@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <title>投票</title>
@@ -12,13 +12,11 @@
 
 <script type="text/javascript">
 $(function(){
-	
 			//取出地址栏中的参数  vsid   主题编号
 	        var href=location.href;
 	        var index=href.indexOf("?");
-	        var params=href.substring(index+1 );   // vsid=1
-	
-	　　   
+	        var params=href.substring(index+1 ); 
+	        // vsid=1
 	        $("#votebutton").click(function(){
 	        	  $.ajax({
 	  				type : "post",
@@ -28,10 +26,11 @@ $(function(){
 	  				success : function(data) {
 	  					if( data.code==1){
 	  						alert("投票成功");
-	  						location.href="view.html?"+params;
-	  					}else{
+	  						location.href="view.action?"+params;
+	  					}else if(data.code==0){
 	  						alert("投票失败,原因:"+ data.msg);
-	  						
+	  					}else{
+	  						location.href="login.action"
 	  					}
 	  				}
 	  			});
@@ -51,11 +50,10 @@ $(function(){
 				}
 			});
 	　　        
-	　　        
 	　　       //发ajax请求，得到所有的数据   当前  vsid 下所有的   subject的style,   voteoption
 	　　　　$.ajax({
 				type : "post",
-				url : "voteSubject_findByVsid.action",  // vsid=xx
+				url : "voteSubject_findByVsid.action?",  // vsid=xx
 				data: params,
 				dataType : "json",
 				success : function(data) {
@@ -68,12 +66,12 @@ $(function(){
 						$("#usercount").html(data.usercount);
 						$("#vsid").val(  data.vsid);   //表单中的隐藏域
 						
-						$("#view").attr("href","view.html?"+params);
+						$("#view").attr("href","view.action?"+params);
 						
 						var listr="";
 						$("#options").html("");
-						for( var i=0;i<data.options.length;i++){
-							var option=data.options[i];
+						for( var i=0;i<data.voteoption.length;i++){
+							var option=data.voteoption[i];
 							if(   data.stype==1){
 								listr+='<li><input type="radio" name="chooseIds"  value="'+  option.voteid+  '"/>'+  option.voteoption+'</li>';
 							}else{
@@ -99,7 +97,7 @@ $(function(){
 </div>
 <div id="navbar" class="wrap">
 	<div class="profile">
-		您好，<span id="loginuser"></span>
+		您好，<span id="loginuser"><span th:text="${session.uname}"></span ></span>
 		<span class="return"><a href="manage.action">返回列表</a></span>
 		<span class="addnew"><a href="add.action">添加新投票</a></span>
 		

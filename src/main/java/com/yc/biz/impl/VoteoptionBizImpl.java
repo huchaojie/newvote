@@ -26,5 +26,12 @@ public class VoteoptionBizImpl implements VoteoptionBiz {
 	public int insert(Voteoption v) {
 		return baseDao.add(v, "insert");
 	}
+	
+	@Override
+	public List<Voteoption> selectVoteoptionAll(Integer vsid) {
+		Voteoption vp=new Voteoption();
+		vp.setVsid(vsid);
+		return baseDao.findAll(vp, "selectVoteoptionAll");
+	}
 
 }

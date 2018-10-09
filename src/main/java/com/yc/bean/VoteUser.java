@@ -1,6 +1,6 @@
 package com.yc.bean;
 
-public class Voteuser {
+public class VoteUser {
 	
 	private Integer uid;
 	private String uname;

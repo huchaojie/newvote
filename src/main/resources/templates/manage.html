@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <title>投票主题</title>
@@ -26,14 +26,13 @@ $(function(){
 							str+=' class="odd" ';
 						}
 						str+='><h4>';
-						str+='<a href="">'+ item.title+'</a>';
+						str+='<a href="vote.action?entityId='+   item.vsid +'">'+ item.title+'</a>';
 						str+='</h4><div class="join">';
-						str+='<a href="vote.action?vsid='+   item.vsid +'">我要参与</a></div>';
+						str+='<a href="vote.action?entityId='+   item.vsid +'">我要参与</a></div>';
 						str+='<p class="info">共有 '+ item.optioncount+'个选项，已有  '+ item.usercount+'个网友参与了投票。</p>';
 						str+='</li>';
 			           $("#list").html(  $("#list").html()+str   );
 			        });
-					alert(str)
 				}else{
 					alert("查询数据失败,原因:"+ data.msg);
 				}
@@ -61,15 +60,12 @@ $(function(){
 		<img src="images/logo.gif" />
 	</div>
 
-
-
 	<div id="navbar" class="wrap">
 		<div class="profile">
-			您好，<span id="loginUser"></span> <span class="return"><a
-				href="manage.action">返回列表</a></span> <span class="addnew"><a
-				href="add.action">添加新投票</a></span>
-
-
+			您好，<span id="loginUser"></span> <span class="return"><span
+				id="loginUser"><span th:text="${session.uname}"></span></span> <span
+				class="return"><a href="manage.action">返回列表</a></span> <span
+				class="addnew"><a href="add.action">添加新投票</a></span>
 		</div>
 		<div class="search">
 			<form method="post" action="voteSubject_search.action">
@@ -82,13 +78,12 @@ $(function(){
 	<div id="vote" class="wrap">
 		<h2>投票列表</h2>
 		<ul id="list" class="list">
-
 			<li class="odd">
-				<h4>
+				<!-- <h4>
 					<a href="Vote!view.action?entityId=103">中国首都是??</a>
-				</h4>
+				</h4> -->
 				<div class="join">
-					<a href="Vote.action?entityId=103">我要参与</a>
+					<a href="Vote.action?entityId=21">我要参与</a>
 				</div>
 				<p class="info">共有 5 个选项，已有 个网友参与了投票。</p>
 			</li>

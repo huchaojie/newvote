@@ -4,11 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yc.mapper.VoteUserMapper">
 
-	<select id="login" parameterType="VoteUser" resultType="VoteUser">
+	<select id="login" resultType="com.yc.bean.VoteUser">
 		select * from voteuser where uname=#{uname} and pwd=#{pwd}
 	</select>
 	
-	<insert id="insert" parameterType="VoteUser" >
+	<insert id="insert" parameterType="com.yc.bean.VoteUser" >
      	insert into voteuser(uname,pwd) values(#{uname},#{pwd})
    	</insert>
 

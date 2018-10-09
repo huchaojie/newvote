@@ -5,9 +5,10 @@ import java.util.List;
 
 public class Votesubject {
 
-	private Long vsid;
+	private Integer vsid;
 	private String title;
 	private int stype;
+	
 	private List<Voteoption> voteoption;
 	private Integer usercount;
 	private Integer optioncount; // 这个主题的选项数
@@ -15,12 +16,12 @@ public class Votesubject {
 	private List<Long> chooseIds = new ArrayList<Long>();
 	private List<String> voteoptions = new ArrayList<String>();
 
-	public Long getVsid() {
+	public Integer getVsid() {
 		return vsid;
 	}
 
-	public void setVsid(Long vsid) {
-		this.vsid = vsid;
+	public void setVsid(Integer entityId) {
+		this.vsid = entityId;
 	}
 
 	public String getTitle() {
@@ -93,5 +94,4 @@ public class Votesubject {
 				+ ", usercount=" + usercount + ", optioncount=" + optioncount + ", options=" + options + ", chooseIds="
 				+ chooseIds + ", voteoptions=" + voteoptions + "]";
 	}
-
 }

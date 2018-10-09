@@ -8,4 +8,5 @@ public interface VoteoptionBiz {
 
 	int insert(Voteoption v);
 	
+	List<Voteoption> selectVoteoptionAll(Integer entityId);
 }

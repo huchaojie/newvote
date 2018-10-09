@@ -9,26 +9,18 @@ public class VoteItem implements Serializable{
 	private Integer vsid; // 主题
 	private Integer voteid; // 用户确定选择的选项
 	private Integer uid; // 用户
-
+	
+	private Integer nums;
 	public Integer votecount;
 	private String voteoption;
-	
-	
 
-	public String getVoteoption() {
-		return voteoption;
+	
+	public void setNums(Integer nums) {
+		this.nums = nums;
 	}
 
-	public void setVoteoption(String voteoption) {
-		this.voteoption = voteoption;
-	}
-	
-	public Integer getVotecount() {
-		return votecount;
-	}
-
-	public void setVotecount(Integer votecount) {
-		this.votecount = votecount;
+	public Integer getNums() {
+		return nums;
 	}
 
 	public Integer getViid() {
@@ -66,10 +58,23 @@ public class VoteItem implements Serializable{
 	@Override
 	public String toString() {
 		return "VoteItem [viid=" + viid + ", vsid=" + vsid + ", voteid="
-				+ voteid + ", uid=" + uid + ", votecount=" + votecount
-				+ ", voteoption=" + voteoption + "]\n";
+				+ voteid + ", uid=" + uid + ", nums=" + nums + "]";
 	}
 
-	
+	public Integer getVotecount() {
+		return votecount;
+	}
+
+	public void setVotecount(Integer votecount) {
+		this.votecount = votecount;
+	}
+
+	public String getVoteoption() {
+		return voteoption;
+	}
+
+	public void setVoteoption(String voteoption) {
+		this.voteoption = voteoption;
+	}
 
 }
