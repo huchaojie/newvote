@@ -43,9 +43,9 @@ $(function(){
 			success : function(data) {
 				if( data.code==1){
 					alert("登录成功...");
-					location.href="manage.html";
+					location.href="manage.action";
 				}else{
-					alert("登录失败,原因:"+ data.msg);
+					alert("登录失败,原因:"+ data.error);
 				}
 
 			}
@@ -71,11 +71,11 @@ $(function(){
 				<h2>用户登录</h2>
 				<form id="myform" method="post" action="">
 					<dl id="loginBox">
-						<dt>用户名：</dt>
+						<dt>账号：</dt>
 						<dd>
 							<input type="text" class="input-text" name="uname" value="a" />
 						</dd>
-						<dt>密 码：</dt>
+						<dt>密码：</dt>
 						<dd>
 							<input type="password" class="input-text" name="pwd" value="a" />
 						</dd>

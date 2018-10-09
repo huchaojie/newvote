@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yc.mapper.VoteUserMapper">
+<mapper namespace="com.yc.mapper.VoteuserMapper">
 
-	<select id="login" parameterType="com.yc.bean.VoteUser" resultType="com.yc.bean.VoteUser">
+	<select id="login" parameterType="com.yc.bean.Voteuser" resultType="com.yc.bean.Voteuser">
 		select * from voteuser where uname=#{uname} and pwd=#{pwd}
 	</select>
 

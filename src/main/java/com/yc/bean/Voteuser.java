@@ -1,36 +1,55 @@
 package com.yc.bean;
 
-public class Voteuser {
+import java.io.Serializable;
+
+//用户类
+public class Voteuser implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private Integer uid; // 用户编号
+	private String uname; // 用户名
+	private String pwd; // 密码
 	
-	private Integer uid;
-	private String uname;
-	private String pwd;
+	private String confirmPwd;
 	
+	
+
+	public String getConfirmPwd() {
+		return confirmPwd;
+	}
+
+	public void setConfirmPwd(String confirmPwd) {
+		this.confirmPwd = confirmPwd;
+	}
+
 	public Integer getUid() {
 		return uid;
 	}
+
 	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
+
 	public String getUname() {
 		return uname;
 	}
+
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
+
 	public String getPwd() {
 		return pwd;
 	}
+
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Voteuser [uid=" + uid + ", uname=" + uname + ", pwd=" + pwd
+		return "VoteUser [uid=" + uid + ", uname=" + uname + ", pwd=" + pwd
 				+ "]";
 	}
-	
-	
 
 }

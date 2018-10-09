@@ -1,7 +1,6 @@
 package com.yc.util;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class JsonModel<T> implements Serializable {
 

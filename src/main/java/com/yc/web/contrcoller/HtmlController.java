@@ -30,4 +30,13 @@ public class HtmlController {
 		return "add";
 	}
 
+	@RequestMapping("vote.action")
+	public String vote(){
+		return "vote";
+	}
+	
+	@RequestMapping("view.action")
+	public String view(){
+		return "view";
+	}
 }

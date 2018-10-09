@@ -22,10 +22,10 @@ $(function(){
 				dataType : "json",
 				success : function(data) {
 					if( data.code==1){
-						$("#loginuser").html( data.obj.uname);
+						$("#loginUser").html( data.obj.uname);
 					}else{
 						alert("您还没有登录");
-						location.href="login.html";
+						location.href="login.action";
 					}
 				}
 			});
@@ -44,7 +44,7 @@ $(function(){
 					$("#usercount").html(data.usercount);
 					//$("#vsid").val(  data.vsid);
 					
-					$("#returnLink").attr("href","vote.html?"+params);
+					$("#returnLink").attr("href","vote.action?"+params);
 					
 					var listr="";
 					$("#result").html("");
@@ -68,14 +68,10 @@ $(function(){
 							count=option.votecount;
 							rate=option.votecount/total*100;   //计算比率
 						}
-						
-						
 						listr+='<div class="ratebg"><div class="percent" style="width:'+ rate+'%"></div></div>';
 						listr+='<p>'+   count+'票<span>('+ rate+'%)</span></p>';
 						listr+='</div></li>';
-					
 					}
-					
 					$("#result").html( listr);
 				}else{
 					alert("查询数据失败,原因:"+ data.msg);
@@ -89,51 +85,61 @@ $(function(){
 <body>
 
 
- 
-<div id="header" class="wrap">
-	<img src="images/logo.gif" />
-</div>
-<div id="navbar" class="wrap">
-	<div class="profile">
-		您好，<span id="loginuser"></span>
-		<span class="return"><a href="manage.html">返回列表</a></span>
-		<span class="addnew"><a href="add.html">添加新投票</a></span>
-		
+
+	<div id="header" class="wrap">
+		<img src="images/logo.gif" />
 	</div>
-	<div class="search">
-		<form method="post" action="voteSubject_search.action">
-			<input type="text" name="title" class="input-text" value=""/><input type="submit" name="submit" class="input-button" value="" />
-		</form>
+	<div id="navbar" class="wrap">
+		<div class="profile">
+			您好，<span id="loginUser"></span> <span class="return"><a
+				href="manage.action">返回列表</a></span> <span class="addnew"><a
+				href="add.action">添加新投票</a></span>
+
+		</div>
+		<div class="search">
+			<form method="post" action="voteSubject_search.action">
+				<input type="text" name="title" class="input-text" value="" /><input
+					type="submit" name="submit" class="input-button" value="" />
+			</form>
+		</div>
 	</div>
-</div>
 
 
 
-<div id="vote" class="wrap">
-	<h2>查看投票</h2>
-	<ul class="list">
-		<li>
-			<h4><span id="title"></span></h4>
-			<p class="info">共有 <span id="optioncount"></span> 个选项，已有 <span id="usercount"></span> 个网友参与了投票。</p>
+	<div id="vote" class="wrap">
+		<h2>查看投票</h2>
+		<ul class="list">
+			<li>
+				<h4>
+					<span id="title"></span>
+				</h4>
+				<p class="info">
+					共有 <span id="optioncount"></span> 个选项，已有 <span id="usercount"></span>
+					个网友参与了投票。
+				</p>
 				<ol id="result">
-				   
+
 					<li>
 						<div class="rate">
-							<div class="ratebg"><div class="percent" style="width:0%"></div></div>
-							<p>0票<span>(0%)</span></p>
+							<div class="ratebg">
+								<div class="percent" style="width: 0%"></div>
+							</div>
+							<p>
+								0票<span>(0%)</span>
+							</p>
 						</div>
 					</li>
-				   
-					
-				  	
+
+
+
 				</ol>
-				<div class="goback"><a id="returnLink" href="">返回投票列表</a></div>
-		</li>
-	</ul>
-</div>
-<div id="footer" class="wrap">
-	源辰信息 &copy; 版权所有
-</div>
+				<div class="goback">
+					<a id="returnLink" href="">返回投票列表</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div id="footer" class="wrap">源辰信息 &copy; 版权所有</div>
 </body>
 </html>
 

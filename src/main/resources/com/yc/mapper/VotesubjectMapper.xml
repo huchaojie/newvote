@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yc.mapper.VotesubjectMapper">
+
 	<insert id="insert" parameterType="Votesubject"
 		useGeneratedKeys="true" keyProperty="vsid">
-		insert into votesubject(title,stype) values(#{title},#{stype})
+		insert into
+		votesubject(title,stype) values(#{title},#{stype})
 	</insert>
+
+	<select id="getAll" parameterType="com.yc.bean.Votesubject" resultType="com.yc.bean.Votesubject">
+		select a.vsid,a.title,a.stype,a.usercount, ifnull(b.optioncount,0) as optioncount from ( 
+		select votesubject.vsid,votesubject.title,votesubject.stype,count( distinct(uid)) as usercount 
+		from voteitem 
+		right join votesubject 
+		on voteitem.vsid=votesubject.vsid 
+		group by voteitem.vsid, votesubject.title ) a 
+		left join ( select votesubject.vsid, count( * ) as optioncount 
+		from votesubject inner join voteoption 
+		on voteoption.vsid=votesubject.vsid group by votesubject.vsid 
+		)b on a.vsid=b.vsid 
+		where a.vsid
+	</select>
+	
+	<select id="find" parameterType="java.lang.Long" resultType="com.yc.bean.VoteItem">
+		select a.voteid,a.voteoption,ifnull(b.votecount,0) as votecount from 
+		(select vsid, voteid,voteoption from voteoption where vsid=#{entityId} ) a 
+		left join (select vsid,voteid,count(voteid) as votecount  from voteitem 
+		where vsid=#{entityId} group by voteid )b on a.voteid=b.voteid
+	</select>
 </mapper>

@@ -38,7 +38,7 @@
 					$("#loginuser").html(data.obj.uname);
 				} else {
 					alert("您还没有登录");
-					location.href = "login.html";
+					location.href = "login.action";
 				}
 			}
 		});
@@ -85,8 +85,8 @@
 	<div id="navbar" class="wrap">
 		<div class="profile">
 			您好，<span id="loginuser"></span> <span class="return"><a
-				href="manage.html">返回列表</a></span> <span class="addnew"><a
-				href="add.html">添加新投票</a></span>
+				href="manage.action">返回列表</a></span> <span class="addnew"><a
+				href="add.action">添加新投票</a></span>
 
 
 		</div>

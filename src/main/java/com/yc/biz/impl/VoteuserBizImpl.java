@@ -19,7 +19,6 @@ public class VoteuserBizImpl implements VoteuserBiz{
 		this.baseDao = baseDao;
 	}
 
-
 	@Override
 	public int insert(Voteuser v) {
 		return baseDao.add(v, "insert");
@@ -30,11 +29,12 @@ public class VoteuserBizImpl implements VoteuserBiz{
 	 */
 	@Override
 	public Voteuser login(Voteuser vu) {
-		List<Voteuser> list = this.baseDao.findAll(vu, "login");
+		List<Voteuser> list = baseDao.findAll(vu, "login");
 		if(list!=null && list.size()>0){
 			return list.get(0);
 		}else{
 			return null;
 		}
 	}
+
 }

@@ -46,7 +46,7 @@ $(function(){
 						$("#loginuser").html( data.obj.uname);
 					}else{
 						alert("您还没有登录");
-						location.href="login.html";
+						location.href="login.action";
 					}
 				}
 			});
@@ -100,8 +100,8 @@ $(function(){
 <div id="navbar" class="wrap">
 	<div class="profile">
 		您好，<span id="loginuser"></span>
-		<span class="return"><a href="manage.html">返回列表</a></span>
-		<span class="addnew"><a href="add.html">添加新投票</a></span>
+		<span class="return"><a href="manage.action">返回列表</a></span>
+		<span class="addnew"><a href="add.action">添加新投票</a></span>
 		
 	</div>
 	<div class="search">
@@ -126,7 +126,7 @@ $(function(){
 					
 				  	
 				</ol>
-				<p class="voteView"><input type="button" src="images/button_vote.gif" id="votebutton" value="投票" /><a id="view" href="" ><img src="images/button_view.gif" /></a></p>
+				<p class="voteView"><input type="button" src="images/button_vote.gif" id="votebutton" value="投票" /><a id="view" href="view.action" ><img src="images/button_view.gif" /></a></p>
 			</form>
 		</li>
 	</ul>

@@ -4,8 +4,10 @@ public class Voteoption {
     
 	private int voteid;
 	private String voteoption;
-	private int vsid;
+	private Long vsid;
 	private int voteorder;
+	public Integer votecount;
+	
 	public int getVoteid() {
 		return voteid;
 	}
@@ -18,10 +20,10 @@ public class Voteoption {
 	public void setVoteoption(String voteoption) {
 		this.voteoption = voteoption;
 	}
-	public int getVsid() {
+	public Long getVsid() {
 		return vsid;
 	}
-	public void setVsid(int vsid) {
+	public void setVsid(Long vsid) {
 		this.vsid = vsid;
 	}
 	public int getVoteorder() {
@@ -34,6 +36,12 @@ public class Voteoption {
 	public String toString() {
 		return "Voteoption [voteid=" + voteid + ", voteoption=" + voteoption
 				+ ", vsid=" + vsid + ", voteorder=" + voteorder + "]";
+	}
+	public Integer getVotecount() {
+		return votecount;
+	}
+	public void setVotecount(Integer votecount) {
+		this.votecount = votecount;
 	}
 	
 	

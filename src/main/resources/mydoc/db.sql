@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 create database votedb;
 
 use votedb;
@@ -21,7 +20,7 @@ create table votesubject
   title   varchar( 2000),
   stype int
 )
-
+select * from votesubject;
 
 
 --投票内容对应的选项表
@@ -171,3 +170,37 @@ insert into voteitem(voteid,vsid,uid) values( 4,3,1);
 insert into voteitem(voteid,vsid,uid) values( 4,3,2);      
 
 insert into voteitem(voteid,vsid,uid) values( 3,1,1); 
+
+select a.vsid,a.title,a.stype,a.usercount,  ifnull(b.optioncount,0) as optioncount from ( 
+		select votesubject.vsid,votesubject.title,votesubject.stype,count( distinct(uid)) as usercount 
+		from voteitem 
+		right join votesubject 
+		on voteitem.vsid=votesubject.vsid 
+		group by voteitem.vsid, votesubject.title ) a 
+		left join ( select votesubject.vsid, count( * ) as optioncount 
+		from votesubject inner join voteoption 
+		on voteoption.vsid=votesubject.vsid group by votesubject.vsid 
+		)b on a.vsid=b.vsid where a.vsid
+		
+
+select a.vsid,a.title,a.stype,a.usercount,  ifnull(b.optioncount,0) as optioncount from (
+		select votesubject.vsid,votesubject.title,votesubject.stype,count( distinct(uid)) as usercount 
+		from voteitem 
+		right join votesubject
+		on voteitem.vsid=votesubject.vsid
+		group by voteitem.vsid, votesubject.title
+	) a
+	left join (
+		select votesubject.vsid, count( * ) as optioncount
+		from votesubject
+		inner join voteoption
+		on voteoption.vsid=votesubject.vsid
+		group by votesubject.vsid
+	)b
+	on a.vsid=b.vsid 
+where a.vsid=6
+
+select a.voteid,a.voteoption,ifnull(b.votecount,0) as votecount from 
+		(select vsid, voteid,voteoption from voteoption where vsid="+entityId+") a "
+		left join (select vsid,voteid,count(voteid) as votecount  from voteitem 
+		where vsid="+entityId group by voteid )b on a.voteid=b.voteid

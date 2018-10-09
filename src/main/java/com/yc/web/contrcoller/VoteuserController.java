@@ -18,11 +18,12 @@ public class VoteuserController {
 
 	@Resource(name = "voteuserBizImpl")
 	private VoteuserBiz voteuserBiz;
-	
+
 	JsonModel jm = new JsonModel();
 
 	/**
 	 * 用户注册
+	 * 
 	 * @param v
 	 * @return
 	 */
@@ -38,28 +39,32 @@ public class VoteuserController {
 		return jm;
 	}
 
-	@RequestMapping("/voteSubject_findAll.action")
-	@ResponseBody
-	public JsonModel findAll(Voteuser v) {
-		int result = voteuserBiz.insert(v);
-		jm.setCode(result);
-		return jm;
-	}
-	
 	/**
 	 * 登录
 	 */
-	@RequestMapping(value = "login.action",method=RequestMethod.POST)
-	public @ResponseBody JsonModel login(Voteuser vu,HttpSession session,HttpServletRequest req){
-		JsonModel js= new JsonModel();
+	@RequestMapping(value = "/voteUser_login.action", method = RequestMethod.POST)
+	public @ResponseBody JsonModel login(Voteuser vu, HttpSession session, HttpServletRequest req) {
 		vu = voteuserBiz.login(vu);
-		if(vu!=null && !"".equals(vu)){
-			session.setAttribute("vu", vu);
-			js.setCode(1);
-			return js;
+		if (vu != null && !"".equals(vu)) {
+			session.setAttribute("loginUser", vu);
+			jm.setCode(1);
+			return jm;
+		} else {
+			jm.setCode(0);
+			jm.setError("user does not exist.");
+			return jm;
 		}
-		js.setCode(0);
-		return js;
 	}
 
+	@RequestMapping(value = "/voteSubject_getLoginUser.action", method = RequestMethod.POST)
+	public @ResponseBody JsonModel loginUser(Voteuser vu, HttpSession session) {
+		if (session.getAttribute("loginUser") != null) {
+			vu = (Voteuser) session.getAttribute("loginUser");
+			jm.setCode(1);
+			jm.setObj(vu);
+		} else {
+			jm.setCode(0);
+		}
+		return jm;
+	}
 }
