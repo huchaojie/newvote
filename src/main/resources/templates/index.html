@@ -37,8 +37,9 @@ $(function(){
 	　　$("#inputbutton").click(function(){
 	　　　　$.ajax({
 			type : "post",
-			data: $("#myform").serialize(),       // 
-			url : "voteUser_login.action",
+
+			data: $("#myform").serialize(),  
+			url : "login.action",
 			dataType : "json",
 			success : function(data) {
 				if( data.code==1){

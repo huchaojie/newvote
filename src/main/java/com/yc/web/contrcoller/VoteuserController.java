@@ -1,5 +1,9 @@
 package com.yc.web.contrcoller;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,23 +31,36 @@ public class VoteuserController {
 	 * @param v
 	 * @return
 	 */
+	@ApiOperation(value = "添加数据")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "uname", value = "用户名", required = true, dataType = "String"),
+            @ApiImplicitParam(name = "pwd", value = "密码", required = true, dataType = "String")
+    })
 	@RequestMapping("/voteUser_register.action")
 	@ResponseBody
-	public JsonModel reg(Voteuser v) {
-		if (v != null && "".equals(v)) {
-			int result = voteuserBiz.insert(v);
+	public JsonModel reg(String uname,String pwd) {
+		int result;
+		System.out.println(uname);
+		if(uname!=null && uname.length()>0||pwd!=null && pwd.length()>0){
+			Voteuser v=new Voteuser();
+			v.setUname(uname);
+			v.setPwd(pwd);
+			result= voteuserBiz.insert(v);
 			jm.setCode(result);
 			return jm;
+		}else{
+			return jm;
 		}
-		jm.setCode(0);
-		return jm;
 	}
 
 	/**
 	 * 登录
 	 */
-	@RequestMapping(value = "/voteUser_login.action", method = RequestMethod.POST)
-	public @ResponseBody JsonModel login(Voteuser vu, HttpSession session, HttpServletRequest req) {
+	@RequestMapping(value = "login.action", method = RequestMethod.POST)
+	@ResponseBody
+	public JsonModel login(Voteuser vu, HttpSession session,
+			HttpServletRequest req) {
+		JsonModel js = new JsonModel();
 		vu = voteuserBiz.login(vu);
 		if (vu != null && !"".equals(vu)) {
 			session.setAttribute("loginUser", vu);
